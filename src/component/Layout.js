@@ -18,7 +18,9 @@ const Layout = ({ children }) => {
   const location = useLocation(); // Get the current location from the router
 
   const isLoginOrRegister =
-    location.pathname === "/signin" || location.pathname === "/signup";
+    location.pathname === "/signin" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/admin/login";
   return isLoginOrRegister ? (
     <>{children}</>
   ) : (

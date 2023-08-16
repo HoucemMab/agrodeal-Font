@@ -86,7 +86,7 @@ const PurchaseButton = styled.button`
     background-color: #c51605;
   }
 `;
-const PurchasePage = ({ cartItems }) => {
+const PurchasePage = ({ CartItem }) => {
   // Example cart items data (replace with actual cart items)
   //   const cartItems = [
   //     {
@@ -106,14 +106,14 @@ const PurchasePage = ({ cartItems }) => {
   //   ];
 
   useEffect(() => {
-    console.log("From Purchase", cartItems);
-  }, [cartItems]);
+    console.log("From Purchase", CartItem);
+  }, []);
   return (
     <PurchaseContainer>
       <PurchaseTitle>Votre Panier</PurchaseTitle>
       <CartContainer>
-        {cartItems.length > 0 ? (
-          cartItems.map((item) => (
+        {CartItem.length > 0 ? (
+          CartItem.map((item) => (
             <CartItem key={item.id}>
               <CartImage src={item.image} alt={item.title} />
               <CartDetails>
