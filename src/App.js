@@ -21,9 +21,13 @@ import AdminDashboard from "./pages/Dashboard";
 function App() {
   const [CartItem, setCartItem] = useState([]);
 
-  //Step 4 :
   const addToCart = (product) => {
     setCartItem([...CartItem, { ...product }]);
+  };
+  const removeFromCart = (productId) => {
+    setCartItem((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== productId)
+    );
   };
   useEffect(() => {
     console.log("FROM APP ", CartItem);
@@ -41,7 +45,13 @@ function App() {
         />
         <Route
           path="/purchase"
-          element={<PurchasePage CartItem={CartItem} />}
+          element={
+            <PurchasePage
+              setCartItem={setCartItem}
+              cartItem={CartItem}
+              removeFromCart={removeFromCart}
+            />
+          }
         />
         <Route path="/admin/addproduct" element={<AddProductPage />} />
         <Route path="/admin/productPage" element={<AdminProductPage />} />

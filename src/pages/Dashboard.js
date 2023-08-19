@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -49,6 +49,14 @@ const Icon = styled(FontAwesomeIcon)`
 `;
 
 const AdminDashboard = () => {
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Get the token from local storage
+
+    // Redirect if token is not "admin"
+    if (token !== "admin") {
+      window.location.href = "/unauthorized";
+    }
+  }, []);
   return (
     <AdminDashboardContainer>
       <AdminMenu>

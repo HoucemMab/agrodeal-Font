@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import axios from "axios";
 
 const AdminLoginPageContainer = styled.div`
   display: flex;
@@ -68,7 +69,16 @@ const AdminLoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Perform login logic here
+    axios
+      .post("http://localhost:3000/admin/login", { username: email, password })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", "admin");
+        window.location.href = "/admin/dashboard";
+      })
+      .then((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -80,8 +90,8 @@ const AdminLoginPage = () => {
             <FaEnvelope />
           </Icon>
           <Input
-            type="email"
-            placeholder="Adresse Email"
+            type="input"
+            placeholder="username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

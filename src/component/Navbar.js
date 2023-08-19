@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { FiPhone, FiUser, FiLogIn, FiEdit } from "react-icons/fi";
+import {
+  FiPhone,
+  FiUser,
+  FiLogIn,
+  FiEdit,
+  FiShoppingCart,
+} from "react-icons/fi";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const NavbarContainer = styled.nav`
   background-color: #f7ca18;
@@ -48,7 +55,20 @@ const Button = styled.button`
   }
 `;
 
+const CartIcon = styled(FiShoppingCart)`
+  font-size: 30px;
+`;
+
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Replace with your logic for user login state
+  const navigate = useNavigate();
+
+  const cartItemCount = 3; // Replace with your cart item count
+  useEffect(() => {
+    localStorage.getItem("token") !== null
+      ? setIsLoggedIn(true)
+      : setIsLoggedIn(false);
+  }, []);
   return (
     <NavbarContainer>
       <CompanyInfo>
@@ -57,14 +77,30 @@ const Navbar = () => {
       </CompanyInfo>
       <MarketName>AgroDeal</MarketName>
       <ActionButtons>
-        <Button>
-          <FiEdit size={18} />
-          <span>S'inscrire</span>
-        </Button>
-        <Button>
-          <FiLogIn size={18} />
-          <span>Connexion</span>
-        </Button>
+        {isLoggedIn ? (
+          <Button
+            onClick={() => {
+              navigate("/purchase");
+            }}
+          >
+            <CartIcon />
+          </Button>
+        ) : (
+          <>
+            <Button>
+              <FiEdit size={18} />
+              <span onClick={() => (window.location.href = "/signup")}>
+                S'inscrire
+              </span>
+            </Button>
+            <Button>
+              <FiLogIn size={18} />
+              <span onClick={() => (window.location.href = "/signin")}>
+                Connexion
+              </span>
+            </Button>
+          </>
+        )}
       </ActionButtons>
     </NavbarContainer>
   );

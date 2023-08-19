@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -17,6 +17,9 @@ const ContentContainer = styled.div`
 const Layout = ({ children }) => {
   const location = useLocation(); // Get the current location from the router
 
+  useEffect(() => {
+    console.log("From Layout", children);
+  }, []);
   const isLoginOrRegister =
     location.pathname === "/signin" ||
     location.pathname === "/signup" ||

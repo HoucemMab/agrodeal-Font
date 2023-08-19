@@ -88,7 +88,14 @@ const AdminUserPage = () => {
         console.error("Error deleting user:", error);
       });
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Get the token from local storage
 
+    // Redirect if token is not "admin"
+    if (token !== "admin") {
+      window.location.href = "/unauthorized";
+    }
+  }, []);
   return (
     <AdminUserPageContainer>
       <h1>User Management</h1>
@@ -100,7 +107,7 @@ const AdminUserPage = () => {
               <UserEmail>{user.email}</UserEmail>
             </UserInfo>
             <DeleteButton onClick={() => handleDeleteUser(user.id)}>
-              Delete
+              Supprimer
             </DeleteButton>
           </UserCard>
         ))}

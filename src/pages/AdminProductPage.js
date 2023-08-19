@@ -109,7 +109,14 @@ const AdminProductPage = () => {
         console.error("Error deleting product:", error);
       });
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Get the token from local storage
 
+    // Redirect if token is not "admin"
+    if (token !== "admin") {
+      window.location.href = "/unauthorized";
+    }
+  }, []);
   return (
     <AdminPageContainer>
       <h1>Admin Dashboard</h1>
@@ -127,7 +134,7 @@ const AdminProductPage = () => {
               <ProductTitle>{product.productName}</ProductTitle>
             </ProductInfo>
             <DeleteButton onClick={() => handleDeleteProduct(product.id)}>
-              Delete
+              Supprimer
             </DeleteButton>
           </ProductListItem>
         ))}

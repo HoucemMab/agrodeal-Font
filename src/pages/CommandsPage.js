@@ -81,7 +81,14 @@ const CommandsPage = () => {
         console.error("Error deleting command:", error);
       });
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Get the token from local storage
 
+    // Redirect if token is not "admin"
+    if (token !== "admin") {
+      window.location.href = "/unauthorized";
+    }
+  }, []);
   return (
     <CommandsContainer>
       {commands.map((command) => (

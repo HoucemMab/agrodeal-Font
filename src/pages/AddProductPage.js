@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const AddProductPageContainer = styled.div`
   display: flex;
@@ -90,7 +91,14 @@ const AddProductPage = () => {
       // Handle error, e.g. show an error message
     }
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token"); // Get the token from local storage
 
+    // Redirect if token is not "admin"
+    if (token !== "admin") {
+      window.location.href = "/unauthorized";
+    }
+  }, []);
   return (
     <AddProductPageContainer>
       <AddProductForm onSubmit={handleAddProduct}>
