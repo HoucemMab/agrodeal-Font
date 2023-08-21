@@ -73,7 +73,7 @@ const Navbar = () => {
     <NavbarContainer>
       <CompanyInfo>
         <FiPhone size={16} />
-        <p>22222222</p>
+        <p>+216 56 660 480</p>
       </CompanyInfo>
       <MarketName>AgroDeal</MarketName>
       <ActionButtons>

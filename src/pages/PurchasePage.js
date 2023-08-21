@@ -196,7 +196,7 @@ const PurchasePage = ({ cartItem, removeFromCart, setCartItem }) => {
         )}
       </CartContainer>
       {cartItem.length > 0 && (
-        <TotalPrice>Prix Totale: ${calculateTotalPrice()}</TotalPrice>
+        <TotalPrice>Prix Totale: TND {calculateTotalPrice()}</TotalPrice>
       )}
       <PurchaseButton
         onClick={() => {

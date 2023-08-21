@@ -48,31 +48,32 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <SectionTitle>Contact Us</SectionTitle>
+          <SectionTitle>Contact</SectionTitle>
           <ContactInfo>
             <Icon>
               <FiMapPin />
             </Icon>
-            <span>123 Street, City, Country</span>
+            <span>20 Mars, Le Bardo , Tunis</span>
           </ContactInfo>
           <ContactInfo>
             <Icon>
               <FiPhone />
             </Icon>
-            <span>123-456-7890</span>
+            <span>+216 56 660 480</span>
           </ContactInfo>
           <ContactInfo>
             <Icon>
               <FiMail />
             </Icon>
-            <span>info@example.com</span>
+            <span>hi@agrodeal.com</span>
           </ContactInfo>
         </FooterSection>
         <FooterSection>
-          <SectionTitle>About Us</SectionTitle>
+          <SectionTitle>A propos de nous</SectionTitle>
           <FakeText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in
-            libero non purus volutpat tempus.
+            AgroDeal est une entreprise de commerce en ligne présente sur le
+            marché tunisien. Fondée en 2023, AgroDeals vend des produits
+            alimentaires .
           </FakeText>
         </FooterSection>
       </FooterContent>

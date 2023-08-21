@@ -149,7 +149,7 @@ const ProductListPage = (props) => {
                   alt={product.productName}
                 />
                 <ProductTitle>{product.productName}</ProductTitle>
-                <ProductPrice>${product.productPrice}</ProductPrice>
+                <ProductPrice>TND {product.productPrice}</ProductPrice>
                 <BuyButton onClick={() => handlePurchase(product)}>
                   Acheter{" "}
                   <span role="img" aria-label="cart">
